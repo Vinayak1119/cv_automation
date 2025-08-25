@@ -74,9 +74,7 @@ class PineconeLoader:
             "total_experience": candidate.get("total_experience", {}),
             "relevant_experience": candidate.get("relevant_experience", {})
         }
-        combined_text = ""
-        for section_name, section_content in sections.items():
-            combined_text += f"{section_name}: {self.json_to_text(section_content)}\n"
+        combined_text = "".join([f"{section_name}: {self.json_to_text(section_content)}\n" for (section_name, section_content) in sections.items()])
         return combined_text
 
     def json_to_text(self, json_data):
