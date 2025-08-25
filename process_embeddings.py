@@ -83,10 +83,9 @@ class PineconeLoader:
         """Convert JSON data to a plain text string."""
         if isinstance(json_data, dict):
             return ' '.join([f"{key}: {value}" for key, value in json_data.items()])
-        elif isinstance(json_data, list):
+        if isinstance(json_data, list):
             return ' '.join([self.json_to_text(item) for item in json_data])
-        else:
-            return str(json_data)
+        return str(json_data)
 
     def generate_embedding(self, text):
         """Generate embeddings for the given text using OpenAI."""
